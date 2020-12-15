@@ -14,16 +14,23 @@ let x = 0;
 let y = 0;
 let z = 0;
 
-
+let length=100;
 
 function setup() {
 	createCanvas(windowWidth, windowHeight, WEBGL);
-	stroke(255, 50, 199	);
-	strokeWeight(2);
+	colorMode(RGB);
+	stroke(23, 243, 255);
+
+	strokeWeight(1);
 	createEasyCam();
 	document.oncontextmenu = () => false;
 	console.log(om_x,om_y,om_z);
-
+	om_x=1.96;
+	A=2;
+	om_y=1.95;
+	B=1.46;
+	om_z=2;
+	C=1.75;
 
 }
 
@@ -33,16 +40,17 @@ function draw() {
 	beginShape();
 	noFill();
 
-	for (let t = 0; t <= 20; t += 0.01) {
+	for (let t = 0; t <= length; t += 0.05) {
+
 		x = A * cos(om_x * t + ph_x);
 		y = B * cos(om_y * t + ph_y);
 		z = C * cos(om_z * t + ph_z)
-		vertex(10 * x, 1 * 10 * y, z * 10);
+		vertex(100* x,   100 * y, z * 100);
 	}
 	endShape();
 	// noLoop();
-	ph_x+=0.01;
-	ph_y+=0.01;
-	ph_z+=0.01;
+	// ph_x+=0.01;
+	// ph_y+=0.01;
+	// ph_z+=0.01;
 
 }
